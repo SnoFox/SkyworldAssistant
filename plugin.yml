@@ -1,0 +1,9 @@
+name: SkyworldAssistant
+description: Help make Skyworlds exist
+version: 1.0.0
+main: net.snofox.minecraft.skyworldassistant.SkyworldAssistant
+author: SnoFox
+website: https://www.snofox.net/
+api-version: 1.13
+depend: []
+softdepend: ["Multiverse-Core"]
