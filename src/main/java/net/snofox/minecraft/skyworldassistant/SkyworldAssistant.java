@@ -15,6 +15,7 @@ import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.world.PortalCreateEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.Vector;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -107,8 +108,10 @@ public class SkyworldAssistant extends JavaPlugin implements Listener {
         final Location newLocation = new Location(destination, currentLocation.getX(), newY, currentLocation.getZ(),
                 currentLocation.getYaw(), currentLocation.getPitch());
         newLocation.add(0, .5, 0);
-        if(travelingFromOverworld && !p.isFlying()) createSafeSpot(newLocation);
+        if(travelingFromOverworld && !p.isFlying() && !p.isGliding()) createSafeSpot(newLocation);
+        final Vector playerVelocity = p.getVelocity();
         p.teleport(newLocation);
+        if(p.isGliding()) p.setVelocity(playerVelocity);
     }
 
     private void createSafeSpot(final Location loc) {
