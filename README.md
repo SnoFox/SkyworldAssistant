@@ -1,4 +1,4 @@
-# Aether
+# SkyworldAssistant
 Companion to assist in the creation of skyworlds
 
 # What it does

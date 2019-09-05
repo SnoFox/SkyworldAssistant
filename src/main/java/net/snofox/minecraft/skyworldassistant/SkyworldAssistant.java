@@ -13,6 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.world.PortalCreateEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -87,6 +88,12 @@ public class SkyworldAssistant extends JavaPlugin implements Listener {
         } catch (NoSuchMethodError ex) {
             // No-op; Spigot API isn't available in this environment
         }
+    }
+
+    @EventHandler
+    public void onPortalCreate(final PortalCreateEvent ev) {
+        if(worldMapInverse.containsKey(ev.getWorld().getName()))
+            ev.setCancelled(true);
     }
 
     private boolean isOverworld(final World world) {
