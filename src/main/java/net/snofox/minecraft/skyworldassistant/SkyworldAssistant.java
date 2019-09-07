@@ -82,7 +82,6 @@ public class SkyworldAssistant extends JavaPlugin implements Listener {
     public void onBedEnter(final PlayerBedEnterEvent ev) {
         final World world = ev.getBed().getWorld();
         if(!worldMapInverse.containsKey(world.getName())) return;
-        getLogger().info("Result is " + ev.getBedEnterResult());
         ev.setUseBed(Event.Result.DENY);
         try {
             ev.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText("You feel too restless sleeping so high up"));
